@@ -1,6 +1,6 @@
 const User = require('../models/user')
 
-const getUser = async(req,res)=>{
+exports.getUser = async(req,res)=>{
 
 try{
 const getUserData = await User.find()
@@ -10,4 +10,13 @@ res.status(500).json({message:error.message})
 }
 
 }
-module.exports = {getUser}
+
+exports.getUserByName = async(req,res)=>{
+        const {name} = req.body
+    try{
+        const getByName = await User.find({username:name})
+        res.status(201).json(getByName)
+    }catch(error){
+        res.status(500).json({message:error.message})
+    }
+}

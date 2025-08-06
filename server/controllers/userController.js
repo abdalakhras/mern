@@ -1,6 +1,6 @@
 const User  =require('../models/user')
 
-const creatUser = async (req,res)=>{
+exports.creatUser = async (req,res)=>{
     const userName = req.body.username;
     const email = req.body.email;
     const password = req.body.password
@@ -18,4 +18,3 @@ const creatUser = async (req,res)=>{
     }
 }
 
-module.exports = {creatUser}
