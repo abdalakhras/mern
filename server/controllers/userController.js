@@ -12,9 +12,9 @@ const creatUser = async (req,res)=>{
         password:password,
         })
         await user.save()
-        res.status(2001).jason({message :'user data are created and saved in mongoDB',user})
+        res.status(200).json({message :'user data are created and saved in mongoDB',user})
     }catch(error){
-        res.status(500).jason({message:error})
+        res.status(500).json({message:error})
     }
 }
 
