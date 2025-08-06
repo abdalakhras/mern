@@ -2,7 +2,7 @@ const express = require('express')
 const connectDB = require('./config/db')
 const dotenv = require('dotenv')
 
-const User = require('./models/user')
+// const User = require('./models/user')
 
 const userRouter  = require('./routers/userRouters')
 
