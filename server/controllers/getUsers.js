@@ -12,9 +12,9 @@ res.status(500).json({message:error.message})
 }
 
 exports.getUserByName = async(req,res)=>{
-        const {name} = req.body
+        const {username} = req.body
     try{
-        const getByName = await User.find({username:name})
+        const getByName = await User.find({username:username})
         res.status(201).json(getByName)
     }catch(error){
         res.status(500).json({message:error.message})
