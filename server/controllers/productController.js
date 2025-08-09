@@ -59,3 +59,15 @@ exports.updateProduct = async(req,res)=>{
           res.status(500).json({message:error.message})
     }
 }
+
+exports.findByName = async(req,res)=>{
+        Name = req.body.name
+     
+    try {
+           const findName = await Product.find({name:Name})
+          res.status(200).json({message:"founded",product:findName})
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
