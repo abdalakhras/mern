@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 // const User = require('./models/user')
 
 const userRouter  = require('./routers/userRouters')
+const productRouter = require('./routers/productRouter')
 
 dotenv.config()
 connectDB();
@@ -13,6 +14,7 @@ const app = express()
 app.use(express.json());
 
 app.use('/api/users',userRouter)
+app.use('/api/product',productRouter)
 
 // app.get("/hello/:number1/:number2",(req,res)=>{
 //     const num1 = req.params.number1
