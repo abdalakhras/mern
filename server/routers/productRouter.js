@@ -1,5 +1,5 @@
 const express = require('express')
-const {createProduct,getAllProducts,deleteProduct,updateProduct,findByName} = require('../controllers/productController')
+const {createProduct,getAllProducts,deleteProduct,updateProduct,findByName,findGreaterThan} = require('../controllers/productController')
 const { find } = require('../models/user')
  const router = express.Router()
 
@@ -8,5 +8,6 @@ const { find } = require('../models/user')
  router.delete('/deleteProduct/:id',deleteProduct)
  router.put('/updateProduct/:id',updateProduct)
  router.get('/getbyname',findByName)
+ router.get('/findgreater',findGreaterThan)
 
  module.exports = router

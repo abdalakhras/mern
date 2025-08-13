@@ -61,7 +61,7 @@ exports.updateProduct = async(req,res)=>{
 }
 
 exports.findByName = async(req,res)=>{
-        Name = req.body.name
+      const Name = req.body.name
      
     try {
            const findName = await Product.find({name:Name})
@@ -69,5 +69,17 @@ exports.findByName = async(req,res)=>{
     } catch (error) {
         res.status(500).json({message:error.message})
     }
+}
+
+exports.findGreaterThan = async(req,res)=>{
+            const range = req.body.price
+            const range2 = req.body.price2
+    try {
+        const findgreater = await Product.find({price:{$gt:range,$lt:range2}})
+        res.status(200).json({message:"founded",product:findgreater})
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+
 }
 
