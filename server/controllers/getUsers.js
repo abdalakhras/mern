@@ -1,4 +1,6 @@
+
 const User = require('../models/user')
+const jwt = require('jsonwebtoken')
 
 exports.getUser = async(req,res)=>{
 
@@ -40,5 +42,31 @@ exports.updateUserById = async(req,res)=>{
         res.status(200).json({message:'user Updated successfully',updatedUser:updateUser})
     } catch (error) {
         res.status(500).json({message:error.message})
+    }
+}
+exports.Profile = async(req,res)=>{
+        const id = req.user.id
+    try {
+        const userProfile = await User.findById(id)
+        res.status(200).json(userProfile)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+exports.logInUser = async(req,res)=>{
+        const {email,password}=req.body
+    try {
+        const user = await User.findOne({email:email,password:password})
+        const token = jwt.sign({id: user._id},process.env.JWT_SECRET,{expiresIn:"1h"})
+    
+         if(user){
+             res.status(200).json({message:'login successfully',user,token})
+        
+        }else{
+                res.status(401).json({message:'invalid email or password'})
+        }
+        
+    } catch (error) {
+         res.status(500).json({message:error.message})
     }
 }
