@@ -19,6 +19,7 @@ exports.creatUser = async (req,res)=>{
         await user.save()
         res.status(200).json({message :'user data are created and saved in mongoDB',user})
     }catch(error){
+        console.log(error.message)
         res.status(500).json({message:error.message})
     }
 }
