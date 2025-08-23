@@ -69,9 +69,11 @@ exports.logInUser = async(req,res)=>{
         
         }else{
                 res.status(401).json({message:'invalid email or password'})
+                console.log({message:error.message})
         }
         
     } catch (error) {
          res.status(500).json({message:error.message})
+         console.log({message:error.message})
     }
 }
