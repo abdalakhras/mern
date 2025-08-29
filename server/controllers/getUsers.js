@@ -46,7 +46,7 @@ exports.updateUserById = async(req,res)=>{
     }
 }
 exports.Profile = async(req,res)=>{
-        const id = req.user.id
+        const id = req.user.id // req.user is from userAuth, and then we extract the id that was hidden in the token 
     try {
         const userProfile = await User.findById(id)
         res.status(200).json(userProfile)
