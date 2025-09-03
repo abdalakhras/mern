@@ -34,12 +34,11 @@ exports.deleteUserById = async(req,res)=>{
 }
 
 exports.updateUserById = async(req,res)=>{
-    const id = req.params.id
+    const id = req.user.id // this is from userAuth middelware
     const name = req.body.username
     const email = req.body.email 
-    const passWord = req.body.passWord
     try {
-        const updateUser = await User.findByIdAndUpdate(id,{username:name,email:email,password:passWord})
+        const updateUser = await User.findByIdAndUpdate(id,{username:name,email:email})
         res.status(200).json({message:'user Updated successfully',updatedUser:updateUser})
     } catch (error) {
         res.status(500).json({message:error.message})

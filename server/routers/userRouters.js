@@ -8,9 +8,9 @@ router.post('/create',creatUser)
 router.get('/getusersdata',getUser)
 router.post('/getusersdata',getUserByName)
 router.delete('/delete/:id',deleteUserById)
-router.put('/updateuser/:id',updateUserById)
+router.put('/updateuser',userAuth,updateUserById)
 //user profile
-router.get('/userprofile',adminAuth,Profile)
+router.get('/userprofile',userAuth,Profile)
 //login router
 router.post('/userlogin',logInUser)
 
