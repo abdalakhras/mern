@@ -1,6 +1,6 @@
 const express = require('express')
 const {creatUser} = require('../controllers/userController')
-const {getUser,getUserByName,deleteUserById,updateUserById,Profile,logInUser} = require('../controllers/getUsers')
+const {getUser,getUserByName,deleteUserById,updateUserById,Profile,logInUser,checkUserRole} = require('../controllers/getUsers')
 const {userAuth,adminAuth} = require('./userAuth')
 const router = express.Router();
 
@@ -13,5 +13,6 @@ router.put('/updateuser',userAuth,updateUserById)
 router.get('/userprofile',userAuth,Profile)
 //login router
 router.post('/userlogin',logInUser)
+router.get('/userrole',userAuth,checkUserRole)
 
 module.exports = router 

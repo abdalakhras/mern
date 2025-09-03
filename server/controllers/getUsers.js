@@ -76,3 +76,19 @@ exports.logInUser = async(req,res)=>{
          console.log({message:error.message})
     }
 }
+
+exports.checkUserRole = async(req,res)=>{
+    const id = req.user.id
+    try {
+        const userRole = await User.findById(id)
+        if(userRole.role !== 'Admin'){
+            console.log("admin is not found")
+            res.status(403).json({message:'access denied'})
+        }
+        res.status(200).json({message:'access garanteed',userRole})
+        
+    } catch (error) {
+          res.status(500).json({message:error.message})
+         console.log({message:error.message})
+    }
+}
