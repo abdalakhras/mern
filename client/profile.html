@@ -15,10 +15,11 @@
         <p ><strong>email:</strong> <span id="email"></span></p>
         <p ><strong>role:</strong> <span id="role"></span> </p>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">edit profile</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">edit profile</button>
+   
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+<!-- Edit username Modal -->
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -39,6 +40,42 @@
      
 
  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+    </form>     
+</div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">edit password</button>
+<!--Edit password Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">change password</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+    <form id="editpassword">
+        <div class="mb-3">
+         <label for="oldPassword">old Password : </label>
+         <input type="text" id="oldPassword">
+        </div>
+    <div class="mb-3">
+     <label for="newpassword">new password : </label>
+     <input type="text" id="newpassword">
+    </div>
+    <!-- <div class="mb-3">
+     <label for="confirmnewpassword">confirm password : </label>
+     <input type="text" id="confirmnewpassword">
+    </div> -->
+     
+
+ <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save password</button>
     </form>     
 </div>
       <div class="modal-footer">

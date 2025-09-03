@@ -73,3 +73,37 @@ try {
         alert('error updating the profile')
 }
 })
+
+const editpassword = document.getElementById('editpassword')
+editpassword.addEventListener('submit', async function (e) {
+  e.preventDefault()
+  const oldpassword = document.getElementById('oldPassword').value
+  const newpassword = document.getElementById('newpassword').value
+  var token = localStorage.getItem('token')
+
+  try {
+    const response = await fetch('http://localhost:5002/api/users/updateuserpass',{
+         method:'PUT',
+           headers:{
+             'content-type':'application/json',
+             'auth':token
+           },
+           body:JSON.stringify({oldpassword:oldpassword,newpassword:newpassword})
+    })
+    console.log(response)
+    if(response.status==200){
+        const data = await response.json()
+        console.log(data)
+        console.log('password changed successfully')
+        alert('password changed successfully')
+        localStorage.removeItem('token')
+        window.location.href='login.html'
+    }else{
+        alert('password changed faild')
+    }
+
+  } catch (error) {
+    console.log("error",error.message)
+        alert('error updating the password')
+  }
+})

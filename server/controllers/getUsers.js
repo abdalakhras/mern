@@ -92,3 +92,28 @@ exports.checkUserRole = async(req,res)=>{
          console.log({message:error.message})
     }
 }
+
+exports.editpassword = async(req,res)=>{
+    const {oldpassword,newpassword} = req.body // front-end /client side
+    const id = req.user.id // token /userAuth middelware
+    try {
+        const updateuserpassword = await User.findById(id)
+         const ismatched = await bcrypt.compare(oldpassword,updateuserpassword.password) 
+         if(!ismatched){
+            console.log('old password not correct')
+            return res.status(400).json({message:"old password not correct"})
+         }
+         console.log('old password matched')
+         const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newpassword,salt)
+         updateuserpassword.password = hashedPassword
+         await updateuserpassword.save()
+        res.status(200).json({message:'password has been changed',updateuserpassword})
+
+          console.log('old password matched and res from server side is 200')
+          
+    } catch (error) {
+         res.status(500).json({message:error.message})
+         console.log({message:error.message})
+    }
+}
