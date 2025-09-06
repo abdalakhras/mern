@@ -23,10 +23,11 @@ try {
         res.status(400).json({message:"token not found"})
     }
     const verified = jwt.verify(token,process.env.JWT_SECRET)
-    if(verified.role !== "admin"){
+     req.user = verified
+    if(verified.role !== "Admin"){
         res.status(400).json({message:'you are not Admin/Authorized'})
     }
-    req.user = verified
+   
     next()
 
 } catch (error) {

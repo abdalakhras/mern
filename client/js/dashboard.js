@@ -35,3 +35,73 @@ try {
 }
 
 checkrole()
+
+var usersBody = document.getElementById('userBody')
+async function loadUsers() {
+    
+    const token = localStorage.getItem('token')
+    try {
+        var res = await fetch('http://localhost:5002/api/users/getusersdata',{
+            method:"GET",
+         headers:{
+             'content-type':'application/json',
+             'auth':token
+           },
+        })
+        if(res.status == 201 ){
+            var data = await res.json()
+            console.log(data)
+            renderUser(data)
+        }else {
+            console.log('error in loadind users data')
+        }
+    } catch (error) {
+         alert("error in server")
+    console.log("error:",error.message)
+    }
+}
+function renderUser(users){
+    usersBody.innerHTML = ''
+    users.forEach(user => {
+        var row = document.createElement('tr')
+      row.innerHTML = `
+      <td>${user._id}</td>
+       <td>${user.username}</td>
+        <td>${user.email}</td>
+         <td>${user.role}</td>
+         <td>
+         <button onclick = "deleteuser('${user._id}')">delete</button>
+         <button onclick = "updateuser('${user._id}')">update</button>
+         </td>
+       `
+       usersBody.appendChild(row)
+    });
+
+}
+loadUsers()
+
+async function deleteuser(userID) {
+    const token = localStorage.getItem('token')
+
+    try {
+        var res = await fetch(`http://localhost:5002/api/users/delete/${userID}`,{
+              method:"DELETE",
+         headers:{
+             'content-type':'application/json',
+             'auth':token
+           },
+
+        })
+        if(res.status ==201){
+           alert('user deleted succefully')
+           var data = await res.json()
+           console.log(data)
+           loadUsers()
+        }
+        
+    } catch (error) {
+         alert("error in server")
+    console.log("error:",error.message)
+    }
+    
+}
