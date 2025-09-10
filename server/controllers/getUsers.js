@@ -117,3 +117,21 @@ exports.editpassword = async(req,res)=>{
          console.log({message:error.message})
     }
 }
+
+exports.updatebyAdmin = async(req,res)=>{
+    const id = req.body.id // came from the req from front-end
+    const userName = req.body.username // came from the req from front-end
+    const email = req.body.email // came from the req from front-end
+    const role  = req.body.role // came from the req from front-end
+
+        
+    try {
+        const updateusersdata = await User.findByIdAndUpdate(id,{username:userName,email:email,role:role})
+        res.status(200).json({updateusersdata,message:"updated successfully"})
+          console.log('updated successfully from server side 200')
+        
+    } catch (error) {
+        res.status(500).json({message:error.message})
+         console.log({message:error.message})
+    }
+}

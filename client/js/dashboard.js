@@ -71,7 +71,7 @@ function renderUser(users){
          <td>${user.role}</td>
          <td>
          <button onclick = "deleteuser('${user._id}')">delete</button>
-         <button onclick = "updateuser('${user._id}')">update</button>
+         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick = "updateuser('${user._id}','${user.username}','${user.email}','${user.role}')">update</button>
          </td>
        `
        usersBody.appendChild(row)
@@ -105,3 +105,48 @@ async function deleteuser(userID) {
     }
     
 }
+
+async function updateuser(id,name,email,role) {
+    console.log(id,name,email,role)
+     var userName = document.getElementById('userName')
+    var userEmail = document.getElementById('userEmail')
+    var userRole = document.getElementById('userRole')
+    var userId = document.getElementById('userId')
+     userId.value = id
+    userName.value = name
+    userEmail.value = email
+    userRole.value = role
+   
+
+}
+
+var updatedataform = document.getElementById('updatedataform')
+updatedataform.addEventListener('submit',async function (e) {
+    e.preventDefault()
+    var userName = document.getElementById('userName').value
+    var userEmail = document.getElementById('userEmail').value
+    var userRole = document.getElementById('userRole').value
+    var userId = document.getElementById('userId').value
+      const token = localStorage.getItem('token')
+
+    try {
+        const res = await fetch(`http://localhost:5002/api/users/updatebyAdmin`,{
+            method:'PUT',
+             headers:{
+             'content-type':'application/json',
+             'auth':token
+           },
+           body : JSON.stringify({id:userId,username:userName,email:userEmail,role:userRole})
+        })
+        if(res.status == 200){
+         const data = await res.json()
+         console.log(data)
+            alert('updated succssefully')
+             loadUsers()
+        }
+    } catch (error) {
+         alert("error in server")
+    console.log("error:",error.message)
+    }
+
+})
