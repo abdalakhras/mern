@@ -8,8 +8,52 @@
 </head>
 <body>
     <h1>welcome in dashboard Admin</h1>
-    <!-- <div id="userRole"></div> -->
-    <a href="home.html">logOut</a>
+ 
+    <button class="btn btn-primary" id="logOut2">logOut</button>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newuserModal">
+  add user
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="newuserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+       <form id="addUser">
+         <div class="mb-3">
+            <label for="newuserName" class="col-form-label">new userName:</label>
+            <input type="text" class="form-control" id="newuserName">
+         </div>
+         <div class="mb-3">
+            <label for="newuserEmail" class="col-form-label">new userEmail:</label>
+            <input type="text" class="form-control" id="newuserEmail">
+         </div>
+         <div class="mb-3">
+            <label for="newuserRole" class="col-form-label">new userRole:</label>
+            <input type="text" class="form-control" id="newuserRole">
+         </div>
+         <div class="mb-3">
+            <label for="newuserPass" class="col-form-label">new userPassword:</label>
+            <input type="text" class="form-control" id="newuserPass">
+         </div>
+<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+       </form>
+
+      </div>
+      <div class="modal-footer">
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
 
     <table border="2" id="userTable">
         <thead>

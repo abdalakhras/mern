@@ -5,6 +5,8 @@ exports.creatUser = async (req,res)=>{
     const userName = req.body.username;
     const email = req.body.email;
     const password = req.body.password
+    const role = req.body.role
+    console.log(role)
         // register new user
     try{
         //encrypt the password
@@ -15,6 +17,7 @@ exports.creatUser = async (req,res)=>{
             username:userName,
         email:email,
         password:hashedPassword,
+        role:role,
         })
         await user.save()
         res.status(200).json({message :'user data are created and saved in mongoDB',user})

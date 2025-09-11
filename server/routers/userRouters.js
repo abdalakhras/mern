@@ -5,6 +5,7 @@ const {userAuth,adminAuth} = require('./userAuth')
 const router = express.Router();
 
 router.post('/create',creatUser)
+router.post('/admincreate',adminAuth,creatUser)
 router.get('/getusersdata',adminAuth,getUser)
 router.post('/getusersdata',getUserByName)
 router.delete('/delete/:id',adminAuth,deleteUserById)

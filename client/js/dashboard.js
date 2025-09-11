@@ -1,3 +1,11 @@
+
+const logOut = document.getElementById('logOut2')
+logOut.addEventListener('click',()=>{
+    localStorage.clear('token')
+    window.location.href = 'login.html'
+})
+
+
 async function checkrole() {
 const token = localStorage.getItem('token')
 
@@ -149,4 +157,38 @@ updatedataform.addEventListener('submit',async function (e) {
     console.log("error:",error.message)
     }
 
+})
+
+var addUser = document.getElementById('addUser')
+addUser.addEventListener('submit',async function(e){
+e.preventDefault()
+const newuserName = document.getElementById('newuserName').value
+const newuserEmail = document.getElementById('newuserEmail').value
+const newuserRole = document.getElementById('newuserRole').value
+const newuserPass = document.getElementById('newuserPass').value
+const token = localStorage.getItem('token')
+
+try {
+    const res = await fetch(`http://localhost:5002/api/users/admincreate`,{
+        method:'POST',
+             headers:{
+             'content-type':'application/json',
+             'auth':token
+           },
+           body : JSON.stringify({username:newuserName,email:newuserEmail,role:newuserRole,password:newuserPass})
+    })
+    if(res.status == 200){
+        const data = await res.json()
+        console.log(data)
+        alert('created successfully')
+        loadUsers()
+    }
+    else{
+        alert('didnot created')
+    }
+    
+} catch (error) {
+    alert("error in server")
+    console.log("error:",error.message)
+}
 })

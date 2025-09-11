@@ -107,3 +107,7 @@ editpassword.addEventListener('submit', async function (e) {
         alert('error updating the password')
   }
 })
+const gotoDashboard = document.getElementById('dashboard')
+gotoDashboard.addEventListener('click',()=>{
+   window.location.href = 'dashboard.html';
+})
