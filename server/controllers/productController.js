@@ -18,7 +18,7 @@ exports.createProduct = async(req,res)=>{
 
         })
         await product.save()
-        res.status(201).json({message:"products created successfully"})
+        res.status(201).json({message:"products created successfully",product})
         
     } catch (error) {
         res.status(500).json({message:error.message})
