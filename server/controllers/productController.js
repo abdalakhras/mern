@@ -54,7 +54,7 @@ exports.updateProduct = async(req,res)=>{
     const image = req.body.img
     try {
         const updateProdcutID = await Product.findByIdAndUpdate(id,{name:name,discripton:discripton,price:price,image:image})
-          res.status(200).json({message:"updated successfully",update:updateProdcutID})
+          res.status(200).json({message:"updated successfully"})
     } catch (error) {
           res.status(500).json({message:error.message})
     }
@@ -64,8 +64,15 @@ exports.findByName = async(req,res)=>{
       const Name = req.body.name
      
     try {
-           const findName = await Product.find({name:Name})
-          res.status(200).json({message:"founded",product:findName})
+           const findName = await Product.findOne({name:Name})
+           if(findName){
+             res.status(200).json({message:"founded",product:findName})
+           }
+           else{
+            res.status(400).json({message:'no such product name'})
+            console.log('no match')
+           }
+         
     } catch (error) {
         res.status(500).json({message:error.message})
     }

@@ -7,7 +7,7 @@ const { find } = require('../models/user')
  router.get('/getAllProducts',getAllProducts)
  router.delete('/deleteProduct/:id',deleteProduct)
  router.put('/updateProduct/:id',updateProduct)
- router.get('/getbyname',findByName)
+ router.put('/getbyname',findByName)
  router.get('/findgreater',findGreaterThan)
 
  module.exports = router

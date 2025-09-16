@@ -24,13 +24,13 @@ function appedndDAta (products){
     products.forEach(itm => {
        let row = document.createElement('tr')
        row.innerHTML= `
-       <td>${itm.name}</td>
+       <td id="Name">${itm.name}</td>
         <td>${itm.discripton}</td>
          <td>${itm.catagory}</td>
           <td>${itm.price}</td>
            <td>${itm.image}</td> 
             <td>
-            <button onclick="updateProduct('${itm._id}','${itm.name}','${itm.price}','${itm.discripton}','${itm.image}')">Update product</button>
+            <button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateProduct('${itm._id}','${itm.name}','${itm.price}','${itm.discripton}','${itm.image}')">Update product</button>
             <button onclick="deleteProduct('${itm._id}')">Delete product</button>
             </td>
        `
@@ -63,3 +63,72 @@ async function deleteProduct (itemID) {
     console.log({message:error.message})
     }
 }
+
+function updateProduct(id,name,price,discripton,image){
+     var productName = document.getElementById('productName')
+     var productprice = document.getElementById('price')
+     var productdescription = document.getElementById('description')
+     var productimage = document.getElementById('image')
+     var productId = document.getElementById('productId')
+     productName.value = name
+     productprice.value =price
+     productdescription.value = discripton
+     productimage.value =image
+     productId.value = id
+}
+
+var updateProd = document.getElementById('updateProd')
+updateProd.addEventListener('submit',async function productUpdate(e) {
+     e.preventDefault()
+    var productName = document.getElementById('productName').value
+    var productdescription = document.getElementById('description').value
+    var prdctpric = document.getElementById('price').value
+    var productimage = document.getElementById('image').value
+    var productId = document.getElementById('productId').value
+    try {
+        const res = await fetch(`http://localhost:5002/api/product/updateProduct/${productId}`,{
+        method:'PUT',
+        headers:{
+            'content-type':'application/json',
+        },
+        body:JSON.stringify({name:productName,discripton:productdescription,price:prdctpric,image:productimage})
+        })
+        if(res.status == 200){
+            alert('product updated successfully')
+            const data = await res.json()
+            console.log(data)
+            getProducts()
+        }
+        
+    } catch (error) {
+        alert("fail to connect with server")
+    console.log({message:error.message})
+    }
+   }) 
+
+   async function findbyname() {
+    var findname = document.getElementById('findname').value
+    try {
+        const res = await fetch('http://localhost:5002/api/product/getbyname',{
+          method:'PUT',
+        headers:{
+            'content-type':'application/json',
+
+        },
+        body:JSON.stringify({name:findname})
+        })
+        if(res.status == 200){
+            alert(' product founded successfully')
+            var data = await res.json()
+            console.log(data)
+            const colo = document.getElementById('Name')
+            colo.style.color='blue'
+        }
+        else{
+            alert('no such a product')
+        }
+    } catch (error) {
+          alert("fail to connect with server")
+    console.log({message:error.message})
+    }
+   }
