@@ -121,6 +121,7 @@ updateProd.addEventListener('submit',async function productUpdate(e) {
             alert(' product founded successfully')
             var data = await res.json()
             console.log(data)
+            console.log(data.product._id) //Destructure Data = {message:"founded",product:{findName}} ,inside the product object , ._id 
             const colo = document.getElementById('Name')
             colo.style.color='blue'
         }
@@ -132,3 +133,34 @@ updateProd.addEventListener('submit',async function productUpdate(e) {
     console.log({message:error.message})
     }
    }
+var AddProducts = document.getElementById('AddProd')
+AddProducts.addEventListener('submit',async function (e) {
+    e.preventDefault()
+var addproductName = document.getElementById('addproductName').value
+var adddescription = document.getElementById('adddescription').value
+var addprice = document.getElementById('addprice').value
+var addcatagory = document.getElementById('addcatagory').value
+var addimage = document.getElementById('addimage').value
+
+try {
+    var res = await fetch('http://localhost:5002/api/product/createproducts',{
+         method:'POST',
+        headers:{
+            'content-type':'application/json',
+        },
+        body:JSON.stringify({name:addproductName,discripton:adddescription,price:addprice,catagory:addcatagory,img:addimage})
+    })
+
+    if(res.status == 201){
+        alert('product added successfully')
+        var data = await res.json()
+        console.log(data)
+          getProducts()
+    }
+} catch (error) {
+     alert("fail to connect with server")
+    console.log({message:error.message})
+}
+
+
+})

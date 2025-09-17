@@ -9,7 +9,44 @@
 </head>
 <body>
     <h1>wellcom to products dashboard</h1>
-    <button>Add Product</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add Product</button>
+    <!-- add product modal -->
+     <div class="modal fade" id="AddProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">uodate Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form id="AddProd">
+        <div class="mb-3">
+            <label for="addproductName" class="col-form-label">productName:</label>
+            <input type="text" class="form-control" id="addproductName">
+            </div>
+            <div class="mb-3">
+            <label for="adddescription" class="col-form-label">description:</label>
+            <input type="text" class="form-control" id="adddescription">
+            </div>
+             <div class="mb-3">
+            <label for="addprice" class="col-form-label">price:</label>
+            <input type="text" class="form-control" id="addprice">
+            </div>
+               <div class="mb-3">
+            <label for="addcatagory" class="col-form-label">catagory:</label>
+            <input type="text" class="form-control" id="addcatagory">
+            </div>
+             <div class="mb-3">
+            <label for="addimage" class="col-form-label">image url:</label>
+            <input type="text" class="form-control" id="addimage">
+            </div>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
     <input type="text" placeholder="find by name" id="findname">
     <button onclick="findbyname() ">find by name</button>
     <button>greater than / less than</button>
