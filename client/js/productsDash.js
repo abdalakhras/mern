@@ -24,7 +24,7 @@ function appedndDAta (products){
     products.forEach(itm => {
        let row = document.createElement('tr')
        row.innerHTML= `
-       <td id="Name">${itm.name}</td>
+       <td class="Name">${itm.name}</td>
         <td>${itm.discripton}</td>
          <td>${itm.catagory}</td>
           <td>${itm.price}</td>
@@ -121,9 +121,15 @@ updateProd.addEventListener('submit',async function productUpdate(e) {
             alert(' product founded successfully')
             var data = await res.json()
             console.log(data)
-            console.log(data.product._id) //Destructure Data = {message:"founded",product:{findName}} ,inside the product object , ._id 
-            const colo = document.getElementById('Name')
-            colo.style.color='blue'
+            console.log(data.product.name) //Destructure Data = {message:"founded",product:{findName}} ,inside the product object , .name
+
+                 var cells = document.querySelectorAll('.Name')
+                    cells.forEach(cell=>{
+                        if(cell.innerHTML == data.product.name){
+                    console.log('matched')
+                       cell.style.color = 'blue'
+                 }
+                    })                
         }
         else{
             alert('no such a product')
