@@ -109,5 +109,10 @@ editpassword.addEventListener('submit', async function (e) {
 })
 const gotoDashboard = document.getElementById('dashboard')
 gotoDashboard.addEventListener('click',()=>{
+  var token = localStorage.getItem('token')
+  if(!token){
+    alert('you are not an admin')
+    window.location.href = 'login.js'
+  }
    window.location.href = 'dashboard.html';
 })

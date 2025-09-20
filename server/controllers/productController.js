@@ -26,7 +26,7 @@ exports.createProduct = async(req,res)=>{
 }
 
 exports.getAllProducts = async(req,res)=>{
-        const getProducts = await Product.find()
+        const getProducts = await Product.find().populate('catagory')
     try {
         res.status(200).json(getProducts)
     } catch (error) {

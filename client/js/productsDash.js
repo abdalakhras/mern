@@ -1,3 +1,4 @@
+ var token = localStorage.getItem('token')
 async function getProducts(){
 try {
     const res = await fetch('http://localhost:5002/api/product/getAllProducts',{
@@ -23,6 +24,11 @@ function appedndDAta (products){
     productTable.innerHTML = ''
     products.forEach(itm => {
        let row = document.createElement('tr')
+       if(itm.catagory && itm.catagory.name){
+        itm.catagory = itm.catagory.name
+       }else{
+        itm.catagory = itm.catagory
+       }
        row.innerHTML= `
        <td class="Name">${itm.name}</td>
         <td>${itm.discripton}</td>
@@ -145,7 +151,7 @@ AddProducts.addEventListener('submit',async function (e) {
 var addproductName = document.getElementById('addproductName').value
 var adddescription = document.getElementById('adddescription').value
 var addprice = document.getElementById('addprice').value
-var addcatagory = document.getElementById('addcatagory').value
+var addcatagory = document.getElementById('catagory').value
 var addimage = document.getElementById('addimage').value
 
 try {
@@ -170,3 +176,30 @@ try {
 
 
 })
+
+async function loadcatagforprodct(){
+
+    try {
+        const res = await fetch('http://localhost:5002/api/catagory/getgatag',{
+                 method:'GET',
+        headers:{
+             'content-type':'application/json',
+        },
+        })
+        if(res.status == 200){
+            const data = await res.json()
+            var catagoryselect  =document.getElementById('catagory')
+            data.forEach(catagory=>{
+                let option = document.createElement('option')
+                option.value = catagory._id
+                option.text = catagory.name
+               catagoryselect.appendChild(option)
+             })
+
+        }
+    } catch (error) {
+        lert("fail to connect with server")
+    console.log({message:error.message})
+    }
+}
+loadcatagforprodct()

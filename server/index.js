@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const userRouter  = require('./routers/userRouters')
 const productRouter = require('./routers/productRouter')
+const catagRouter = require('./routers/catagoryRouter')
 
 dotenv.config()
 connectDB();
@@ -16,6 +17,7 @@ app.use (cors())
 
 app.use('/api/users',userRouter)
 app.use('/api/product',productRouter)
+app.use('/api/catagory',catagRouter)
 
 // app.get("/hello/:number1/:number2",(req,res)=>{
 //     const num1 = req.params.number1

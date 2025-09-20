@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1>wellcom to products dashboard</h1>
+    <a href="catagories.html">go to catagories</a>
+    <br>
+    <br>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddProductModal">Add Product</button>
     <!-- add product modal -->
      <div class="modal fade" id="AddProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -34,7 +37,9 @@
             </div>
                <div class="mb-3">
             <label for="addcatagory" class="col-form-label">catagory:</label>
-            <input type="text" class="form-control" id="addcatagory">
+            <select id="catagory" required>
+              <option value="">select catagory</option>
+            </select>
             </div>
              <div class="mb-3">
             <label for="addimage" class="col-form-label">image url:</label>

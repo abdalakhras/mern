@@ -1,3 +1,5 @@
+ var token = localStorage.getItem('token')
+ 
 
 const logOut = document.getElementById('logOut2')
 logOut.addEventListener('click',()=>{
