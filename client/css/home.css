@@ -1,0 +1,7 @@
+#main-div-card{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.card{
+    text-align: center;
+}

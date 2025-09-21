@@ -18,6 +18,7 @@ loginform.addEventListener('submit',async function(event){
             window.location.href = "profile.html"
             var data = await response.json()
             localStorage.setItem('token',data.token)
+          
             // localStorage.setItem('user',JSON.stringify(data.user))
         }else{
             alert("login faild ,please check credential")

@@ -86,7 +86,7 @@ exports.checkUserRole = async(req,res)=>{
             res.status(403).json({message:'access denied'})
         }
         res.status(200).json({message:'access garanteed',userRole})
-        
+        console.log('he is an Admin')
     } catch (error) {
           res.status(500).json({message:error.message})
          console.log({message:error.message})
