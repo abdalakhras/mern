@@ -51,7 +51,7 @@ exports.updateProduct = async(req,res)=>{
     const discripton  =req.body.discripton
     const  catagory  =req.body.catagory
     const price = req.body.price
-    const image = req.body.img
+    const image = req.body.image
     try {
         const updateProdcutID = await Product.findByIdAndUpdate(id,{name:name,discripton:discripton,price:price,image:image})
           res.status(200).json({message:"updated successfully"})

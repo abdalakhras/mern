@@ -34,7 +34,7 @@ function appedndDAta (products){
         <td>${itm.discripton}</td>
          <td>${itm.catagory}</td>
           <td>${itm.price}</td>
-           <td>${itm.image}</td> 
+           <td ><img src="${itm.image}" alt="Product image" style="width:150px; height:150px;"></td> 
             <td>
             <button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateProduct('${itm._id}','${itm.name}','${itm.price}','${itm.discripton}','${itm.image}')">Update product</button>
             <button onclick="deleteProduct('${itm._id}')">Delete product</button>
