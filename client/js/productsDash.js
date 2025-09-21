@@ -168,6 +168,7 @@ try {
         var data = await res.json()
         console.log(data)
           getProducts()
+          console.log(addcatagory)
     }
 } catch (error) {
      alert("fail to connect with server")
@@ -198,7 +199,7 @@ async function loadcatagforprodct(){
 
         }
     } catch (error) {
-        lert("fail to connect with server")
+        alert("fail to connect with server")
     console.log({message:error.message})
     }
 }
