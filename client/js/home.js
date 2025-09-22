@@ -68,14 +68,18 @@ function renderCatag(catagories){
  var select = document.getElementById('categorySelect')
     select.addEventListener('change',async function (){
     console.log(select.value)
+    if(select.value == 'all'){
+    fetchData()
+    return
+    }
 
     try {
          var res = await fetch('http://localhost:5002/api/product/getAllProducts')
     var data = await res.json()
-    //  console.log(data)
+     console.log(data)
     filterdproducts = data.filter(product=>select.value == product.catagory._id )
         console.log(filterdproducts)
-    //  renderData(filterdproducts)
+     renderData(filterdproducts)
     } catch (error) {
         alert('error fetching products by ctatgory')
         console.log({message:message.error})
