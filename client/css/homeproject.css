@@ -81,3 +81,23 @@ margin-bottom: 0px;
     width: 300px;
     height: 400px;
 }
+#carouselExampleCaptions{
+    width: 100%;
+    
+}
+.carouselImage.active{
+    display: flex;
+    gap: 15%;
+}
+#carousel-control{
+    display: flex;
+    justify-content: center;
+}
+.carousel-control-prev1{
+    border: none transparent;
+    background-color: transparent;
+}
+.carousel-control-next1{
+    border: none transparent;
+    background-color: transparent;
+}
