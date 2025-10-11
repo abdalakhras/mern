@@ -1,0 +1,29 @@
+/* Navigation bar */
+#navbar{
+    margin-top: 20px;
+    background-color: whitesmoke;
+}
+#navbar-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 30px 20px 0px;
+}
+.navbar-list-div{
+    display: flex;
+     gap: 30px;
+}
+.bi{
+    font-size: 30px;
+}
+.bi-caret-left{
+    margin-right: -18px;
+    color: red;
+}
+.navbar-btn{
+    border: transparent;
+    background-color: transparent;
+    font-size: 18px;
+}
+/* search section */
