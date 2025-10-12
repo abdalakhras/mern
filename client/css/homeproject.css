@@ -1,3 +1,8 @@
+body{
+    width: 80%;
+    margin-left: 30px;
+    border: 2px solid;
+}
 /* Navigation bar */
 #navbar{
     margin-top: 20px;
@@ -81,8 +86,12 @@ margin-bottom: 0px;
     width: 300px;
     height: 400px;
 }
+
+/* NEW THIS WEEEK */
+
 #carouselExampleCaptions{
-    width: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
     
 }
 .carouselImage.active{
@@ -100,4 +109,71 @@ margin-bottom: 0px;
 .carousel-control-next1{
     border: none transparent;
     background-color: transparent;
+}
+
+/* XIV SECTION */
+
+#xivSectin-catagory-filter{
+    list-style: none;
+    padding: 0px;
+display: flex;
+gap: 10px;
+}
+/* XIV SECTION GRID */
+
+#xivSectin-grid{
+display: grid;
+grid-template-columns: auto auto auto;
+margin-left: 10%;
+margin-right: 10%;
+}
+#xivSectin-grid-card-text{
+    display: flex;
+}
+#xivSectin-grid-card-text>p{
+    margin-left: 15%;
+}
+#xivSectin-more{
+    display: flex;
+    justify-content: center;
+}
+#xivSectin-more>p{
+    margin-bottom: 0px;
+}
+#xivSectin-more-btn{
+  display: flex;
+    justify-content: center;
+}
+#xivSectin-more-btn>button{
+    border: none; 
+    background-color: transparent;
+    margin-top: 0px;
+}
+/* FAsion TEXT  */
+
+#arpoachTFshion{
+    width: 50%;
+    margin-left: 25%;
+    margin-right:25% ;
+}
+#random-Photots{
+    margin-left: 10%;
+    margin-right: 10%;
+    position: relative;
+}
+
+#random-Photots>img{
+    width: 24%;
+}
+#random-Photots-img1{
+    margin-top: 100px;
+}
+#random-Photots-img2{
+    margin-top: -200px;
+}
+#random-Photots-img3{
+    margin-top: 100px;
+}
+#random-Photots-img4{
+    margin-top: -200px;
 }
