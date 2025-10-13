@@ -8,6 +8,7 @@ const userRouter  = require('./routers/userRouters')
 const productRouter = require('./routers/productRouter')
 const catagRouter = require('./routers/catagoryRouter')
 const projproductsrouter  =require('./routers/porjProductsRouter')
+const projcatagRouter = require('./routers/projcatagRouter')
 
 dotenv.config()
 connectDB();
@@ -20,6 +21,7 @@ app.use('/api/users',userRouter)
 app.use('/api/product',productRouter)
 app.use('/api/catagory',catagRouter)
 app.use('/api/porjproducts',projproductsrouter)
+app.use('/api/projcatag',projcatagRouter)
 
 // app.get("/hello/:number1/:number2",(req,res)=>{
 //     const num1 = req.params.number1
