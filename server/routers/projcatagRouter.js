@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/creatprojCatag',createprojCatag)
 router.get('/getallCatags',getprojCatag)
-router.get('getCatagbyId/:id',getCatagsId)
+router.get('/getCatagbyId/:id',getCatagsId)
 router.put('/updateprojCatag/:id',updateprojCatag)
 router.delete('/deleteCatag/:id',deleCAtagsbyId)
 

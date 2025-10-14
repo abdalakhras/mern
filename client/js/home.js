@@ -82,7 +82,7 @@ function renderCatag(catagories){
      renderData(filterdproducts)
     } catch (error) {
         alert('error fetching products by ctatgory')
-        console.log({message:message.error})
+        console.log({message:error.message})
     }
    
     })
