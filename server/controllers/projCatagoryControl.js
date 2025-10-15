@@ -28,7 +28,7 @@ exports.updateprojCatag = async(req,res)=>{
         res.status(200).json({message:"update success",update:updateCatagory})
     } catch (error) {
          res.status(500).json({message:error.message})
-        console.log(error.message)
+        console.log({message:error.message})
     }
 }
 exports.getprojCatag = async(req,res)=>{
@@ -38,7 +38,7 @@ exports.getprojCatag = async(req,res)=>{
         res.status(200).json(getallCatags)
     } catch (error) {
         res.status(500).json({message:error.message})
-        console.log(error.message)
+        console.log({message:error.message})
     }
 }
 exports.getCatagsId = async(req,res)=>{
@@ -48,7 +48,7 @@ exports.getCatagsId = async(req,res)=>{
         res.status(200).json(getallCatagbyId)
     } catch (error) {
         res.status(500).json({message:error.message})
-        console.log(error.message)
+        console.log({message:error.message})
     }
 }
 exports.deleCAtagsbyId = async(req,res)=>{
@@ -58,6 +58,6 @@ exports.deleCAtagsbyId = async(req,res)=>{
         res.status(200).json({message:"deleted success",deleted:deleteCatagory})
     } catch (error) {
         res.status(500).json({message:error.message})
-        console.log(error.message)
+        console.log({message:error.message})
     }
 }

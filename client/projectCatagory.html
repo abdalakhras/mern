@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/poroductProject.css">
-    <title>Edit products page</title>
+    <title>edit catagory</title>
 </head>
 <body>
-    <h1>Edit products page</h1>
-    <br>
-    <br>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">add Products</button>
-    <a href="./projectCatagory.html" style="text-decoration: none;">go to catagory</a>
+    <h1>edit products catagory</h1>
+    <button><a href="./productProject.html" style="text-decoration: none;">go to products</a></button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#catagoryModal">add catagory</button>
     <br>
         <!-- add products modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="catagoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -24,29 +21,23 @@
       </div>
       <div class="modal-body">
         <!-- form for add -->
-        <form id="proDADDForm">
+        <form id="catagADDForm">
             <div class="mb-3">
-            <label for="addproductName" class="col-form-label">productName:</label>
-            <input type="text" class="form-control" id="addproductName">
+            <label for="addcatagName" class="col-form-label">catagoryName:</label>
+            <input type="text" class="form-control" id="addcatagName">
             </div>
             <div class="mb-3">
-            <label for="adddescription" class="col-form-label">description:</label>
-            <input type="text" class="form-control" id="adddescription">
+            <label for="addcatagdescription" class="col-form-label">description:</label>
+            <input type="text" class="form-control" id="addcatagdescription">
             </div>
              <div class="mb-3">
-            <label for="addprice" class="col-form-label">price:</label>
-            <input type="text" class="form-control" id="addprice">
+            <label for="addcatagphoto" class="col-form-label">photo url:</label>
+            <input type="text" class="form-control" id="addcatagphoto">
             </div>
-             <div class="mb-3">
-            <label for="addphoto" class="col-form-label">photo url:</label>
-            <input type="text" class="form-control" id="addphoto">
-            </div>
-              <div class="mb-3">
-            <label for="addproductCatagory" class="col-form-label">catagory:</label>
-            <select class="form-select" id="addproductCatagory">
-                <option value="all">ALL</option>
-            </select>
-            </div>
+            <!-- <div class="mb-3">
+            <label for="catagID" class="col-form-label">id:</label>
+            <input type="text" class="form-control" id="catagID">
+            </div> -->
              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
         </form>
       </div>
@@ -57,25 +48,22 @@
   </div>
 </div>
 
-    <!-- show products -->
+    <!-- show catagory -->
     <table class="table table-striped " border="2">
         <thead>
             <tr>
-            <th scope="col">productName</th>
-            <th scope="col">discription</th>
-            <th scope="col">catagory</th>
-            <th scope="col">price</th>
-            <th scope="col">image</th>
-            <th scope="col">action</th>
+            <th scope="col">name</th>
+            <th scope="col">description</th>
+            <th scope="col">photoUrl</th>
+             <th scope="col">action</th>
             </tr>
         </thead>
-        <tbody id="tableProduct">
+        <tbody id="tablecatagory">
 
         </tbody>
     </table>
-    <!-- pop up modal for update -->
 
-<!-- Modal -->
+    <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -85,39 +73,32 @@
       </div>
       <div class="modal-body">
         <!-- form for update -->
-        <form id="prodUpdateForm">
+        <form id="catagUpdateForm">
             <div class="mb-3">
-            <label for="productName" class="col-form-label">productName:</label>
-            <input type="text" class="form-control" id="productName">
+            <label for="catagoryName" class="col-form-label">catagoryName:</label>
+            <input type="text" class="form-control" id="catagoryName">
             </div>
             <div class="mb-3">
             <label for="description" class="col-form-label">description:</label>
-            <input type="text" class="form-control" id="discription">
+            <input type="text" class="form-control" id="description">
             </div>
              <div class="mb-3">
-            <label for="price" class="col-form-label">price:</label>
-            <input type="text" class="form-control" id="price">
-            </div>
-             <div class="mb-3">
-            <label for="image" class="col-form-label">photo url:</label>
+            <label for="photo" class="col-form-label">photo url:</label>
             <input type="text" class="form-control" id="photo">
             </div>
               <div class="mb-3">
-            <label for="productId" class="col-form-label">productId:</label>
-            <input type="text" class="form-control" id="productId">
+            <label for="catagoryId" class="col-form-label">catagoryId:</label>
+            <input type="text" class="form-control" id="catagoryId">
             </div>
              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
         </form>
       </div>
-      <div class="modal-footer">
-    
-      </div>
-    </div>
+       </div>
   </div>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script src="./js/productProject.js"></script>
+    <script src="./js/projectCatag.js"></script>
 </body>
 </html>
