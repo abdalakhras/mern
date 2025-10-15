@@ -145,6 +145,7 @@ updateProd.addEventListener('submit',async function productUpdate(e) {
     console.log({message:error.message})
     }
    }
+   
 var AddProducts = document.getElementById('AddProd')
 AddProducts.addEventListener('submit',async function (e) {
     e.preventDefault()

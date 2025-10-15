@@ -17,9 +17,10 @@ try {
     })
     await projproduct.save()
     res.status(200).json({message:'products created succefully',products : projproduct})
+    console.log('success')
 } catch (error) {
     res.status(500).json({message:error.message})
-    console.log(errerror.messageor)
+    console.log({message:error.message})
  }
 }
 exports.getprojProdct = async(req,res)=>{
@@ -29,7 +30,7 @@ exports.getprojProdct = async(req,res)=>{
         res.status(200).json(getprojprod)
     } catch (error) {
         res.status(500).json({message:error.message})
-    console.log(error.message)
+    console.log({message:error.message})
     }
 }
 exports.deleteProjProd = async(req,res)=>{
