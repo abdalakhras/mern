@@ -28,6 +28,11 @@ function apendProducts (products){
     tableProduct.innerHTML = ''
 products.forEach(itm => {
     let tableRow = document.createElement('tr')
+    if(itm.catagory && itm.catagory.name){
+        itm.catagory = itm.catagory.name
+    }else {
+        itm.catagory = 'no defined catagory'
+    }
     tableRow.innerHTML = `
     <td>${itm.name}</td>
     <td>${itm.discription}</td>
@@ -140,5 +145,39 @@ proDADDForm.addEventListener('submit',async(e)=>{
     }
 
 })
+
+
+async function getCatagintoProdpage()
+{
+    
+    try {
+        const res = await fetch('http://localhost:5002/api/projcatag/getallCatags',{
+             method:'GET',
+        headers:{
+             'content-type':'application/json',
+        },
+        })
+        if(res.status==200){
+            const data = await res.json()
+            console.log(data)
+            appendCatagtopro(data)
+        }
+    } catch (error) {
+        alert("fail to connect with server")
+    console.log({message:error.message})
+    }
+}
+var catagorySelect = document.getElementById('addproductCatagory')
+function appendCatagtopro(catagories){
+
+    catagories.forEach(catagory=>{
+        let option = document.createElement('option')
+        option.value = catagory._id
+        option.text = catagory.name
+        catagorySelect.appendChild(option)
+    })
+}
+getCatagintoProdpage()
+
 
 
