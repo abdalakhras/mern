@@ -179,5 +179,23 @@ function appendCatagtopro(catagories){
 }
 getCatagintoProdpage()
 
-
+function appendCatagtopro(catagories){
+    let cutSize = 2
+    let cutArr = []
+   
+    for(let i=0 ; i <catagories.length;i+=cutSize){
+        cutArr.push(catagories.slice(i,i+cutSize))
+    }
+    console.log('cutArr',cutArr)
+   
+    var appendDiv = document.getElementById('appendDiv')
+    cutArr.forEach((arr,index)=>{
+        let div = document.createElement('div')
+       if(index === 0) div.className = 'active'
+      div.innerHTML= arr.map(itm=>`<p>${itm.name}</p>`).join('')
+      console.log(div)
+         appendDiv.appendChild(div)
+    })
+   
+}
 
