@@ -180,19 +180,21 @@ function appendCatagtopro(catagories){
 getCatagintoProdpage()
 
 function appendCatagtopro(catagories){
-    let cutSize = 2
+    let sliceSize = 2
     let cutArr = []
-   
-    for(let i=0 ; i <catagories.length;i+=cutSize){
-        cutArr.push(catagories.slice(i,i+cutSize))
+    let slicedArr = ''
+    for(let i=0 ; i <catagories.length ; i+=sliceSize){
+        slicedArr = catagories.slice(i,i+sliceSize) 
+        cutArr.push(slicedArr)    
     }
-    console.log('cutArr',cutArr)
-   
+    console.log(cutArr)
+    
     var appendDiv = document.getElementById('appendDiv')
-    cutArr.forEach((arr,index)=>{
+    cutArr.forEach((slicedArr,index)=>{
         let div = document.createElement('div')
-       if(index === 0) div.className = 'active'
-      div.innerHTML= arr.map(itm=>`<p>${itm.name}</p>`).join('')
+        div.classList.add('divClass')
+        if(index === 0) div.classList.add('active')
+      div.innerHTML= slicedArr.map(obj=>`<p>${obj.name}</p>`).join('')
       console.log(div)
          appendDiv.appendChild(div)
     })

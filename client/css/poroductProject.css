@@ -1,0 +1,6 @@
+.divClass{
+    display: none;
+}
+.active{
+    display: block;
+}
