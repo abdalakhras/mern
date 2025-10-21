@@ -77,7 +77,17 @@ function renderCatag(catagories){
          var res = await fetch('http://localhost:5002/api/product/getAllProducts')
     var data = await res.json()
      console.log(data)
-    filterdproducts = data.filter(product=>select.value == product.catagory._id )
+    filterdproducts = data.filter(product=>{
+         if(!product.catagory||!product.catagory._id){
+        product.catagory = {_id:'68edfdee8fd529cce3035fbd'}
+    }else{
+        product.catagory._id = product.catagory._id
+    }
+        
+       return select.value == product.catagory._id 
+    
+    })
+   
         console.log(filterdproducts)
      renderData(filterdproducts)
     } catch (error) {

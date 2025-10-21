@@ -179,25 +179,25 @@ function appendCatagtopro(catagories){
 }
 getCatagintoProdpage()
 
-function appendCatagtopro(catagories){
-    let sliceSize = 2
-    let cutArr = []
-    let slicedArr = ''
-    for(let i=0 ; i <catagories.length ; i+=sliceSize){
-        slicedArr = catagories.slice(i,i+sliceSize) 
-        cutArr.push(slicedArr)    
-    }
-    console.log(cutArr)
+// function appendCatagtopro(catagories){
+//     let sliceSize = 2
+//     let cutArr = []
+//     let slicedArr = ''
+//     for(let i=0 ; i <catagories.length ; i+=sliceSize){
+//         slicedArr = catagories.slice(i,i+sliceSize) 
+//         cutArr.push(slicedArr)    
+//     }
+//     console.log(cutArr)
     
-    var appendDiv = document.getElementById('appendDiv')
-    cutArr.forEach((slicedArr,index)=>{
-        let div = document.createElement('div')
-        div.classList.add('divClass')
-        if(index === 0) div.classList.add('active')
-      div.innerHTML= slicedArr.map(obj=>`<p>${obj.name}</p>`).join('')
-      console.log(div)
-         appendDiv.appendChild(div)
-    })
+//     var appendDiv = document.getElementById('appendDiv')
+//     cutArr.forEach((slicedArr,index)=>{
+//         let div = document.createElement('div')
+//         div.classList.add('divClass')
+//         if(index === 0) div.classList.add('active')
+//       div.innerHTML= slicedArr.map(obj=>`<p>${obj.name}</p>`).join('')
+//       console.log(div)
+//          appendDiv.appendChild(div)
+//     })
    
-}
+// }
 
