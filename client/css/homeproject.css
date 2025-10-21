@@ -120,6 +120,9 @@ margin-bottom: 0px;
 display: flex;
 gap: 10px;
 }
+#xivSectin-catagory-filter>li>button{
+border: none; background-color: transparent;
+}
 /* XIV SECTION GRID */
 
 #xivSectin-grid{

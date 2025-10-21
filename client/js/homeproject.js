@@ -91,5 +91,35 @@ function xivSectionGrid(productsGrid){
     })
    
 }
+ var catagoryFilter = document.getElementById('xivSectin-catagory-filter')
+async function appendCatagory(){
+   
+    try {
+        const res = await fetch('http://localhost:5002/api/projcatag/getallCatags',{
+            method:"GET",
+            headers:{
+                'content-type':'application/json',
+            },
+        })
+        if(res.status==200){
+            const data = await res.json()
+            console.log(data)
+           
+            data.forEach(obj => {
+                let li = document.createElement('li')
+                li.innerHTML=`<button>${obj.name}</button>` 
+                console.log(li)
+                catagoryFilter.appendChild(li)
+            });
+            
+        }
+    } catch (error) {
+        alert("fail to connect with server")
+    console.log({message:error.message})
+    }
+}
 
+
+
+appendCatagory()
 getProducts()
