@@ -74,7 +74,7 @@ function newCollection(collection){
 
 function xivSectionGrid(productsGrid){
     var xivSectinGrid = document.getElementById('xivSectin-grid')
-    
+    xivSectinGrid.innerHTML=''
     productsGrid.forEach(itm=>{
     let div = document.createElement('div')
     div.className = 'xivSectin-grid-card'
@@ -107,7 +107,7 @@ async function appendCatagory(){
            
             data.forEach(obj => {
                 let li = document.createElement('li')
-                li.innerHTML=`<button>${obj.name}</button>` 
+                li.innerHTML=`<button value ="${obj._id}">${obj.name}</button>` 
                 console.log(li)
                 catagoryFilter.appendChild(li)
             });
@@ -119,7 +119,48 @@ async function appendCatagory(){
     }
 }
 
+catagoryFilter.addEventListener('click',async (event)=>{
+    var id = event.target.value
 
+    if(event.target.tagName !== 'BUTTON') return
+ 
+        console.log(event.target)
+        console.log('this buttons id',id)
+
+    try {
+        const res = await fetch('http://localhost:5002/api/porjproducts/getallprod',{
+            method:"GET",
+            headers:{
+                 'content-type':'application/json',
+            }
+        })
+        if(res.status==200){
+            const data = await res.json()
+            console.log(data)
+            const fliterdatabyCatagory = data.filter(product=>{
+                if(!product.catagory){
+               product.catagory = {_id:'68f014a6bd8be5b15c36026e'}
+                
+        }
+                // console.log(product.catagory)
+                
+                // if ( product.catagory ===  id){
+                //       console.log("matched")
+                // }
+            //   console.log(product.catagory._id)
+                // console.log(id)
+                return product.catagory._id == id
+            })
+            console.log('hey')
+            console.log(fliterdatabyCatagory)
+            xivSectionGrid(fliterdatabyCatagory)
+        }
+    } catch (error) {
+        alert("fail to connect with server")
+    console.log({message:error.message})
+    }
+
+})
 
 appendCatagory()
 getProducts()
