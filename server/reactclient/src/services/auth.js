@@ -22,3 +22,9 @@ export async function getCurrenUser() {
     const user = JSON.parse(raw)
     return user
 }
+
+export async function Register(username,email,password,role) {
+    const {data} = await api.post('users/create',{username,email,password,role})
+    localStorage.setItem('user',JSON.stringify(data.user))
+    return data
+}

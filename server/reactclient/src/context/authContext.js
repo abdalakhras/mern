@@ -1,6 +1,6 @@
 import React,{createContext,useContext,useState} from "react";
 
-import { getCurrenUser,loginForm as apiLogin , logOut as apiLogOut } from "../services/auth";
+import { getCurrenUser,loginForm as apiLogin , logOut as apiLogOut} from "../services/auth";
 
 const Authcontext = createContext(null)
 
@@ -16,6 +16,8 @@ export function AuthProvider({children}){
         apiLogOut()
         setUser(null)
     }
+
+
     return (
         <Authcontext.Provider value={{user,login,logOut}}>
             {children}
