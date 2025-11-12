@@ -30,7 +30,7 @@ export async function Register(username,email,password,role) {
 }
 
 export async function userUpdate(username,email,passowrd) {
-    const {data} = await api.put('/users/updateuser',username,email,passowrd)
+    const {data} = await api.put('/users/updateuser',{username,email,passowrd})
     localStorage.setItem('user',JSON.stringify(data.updatedUser))
     return data
 }
