@@ -11,6 +11,8 @@ const Home = ()=>{
         <h1>welcome to user homepage</h1>
         <h2>hello {user ? user.username : 'guest'}</h2>
         <p>this is user home page</p>
+
+        <a href="/userProfile">userCrud</a>
         </div>
     )
 }

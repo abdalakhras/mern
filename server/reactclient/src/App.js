@@ -6,6 +6,7 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import { AuthProvider } from './context/authContext';
 import ProtectedRoutes from './components/protectedRoutes';
 import Register from './components/register';
+import UserCrud from './components/user/userProfile';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<Login/>}/>
         <Route path='/home' element={<ProtectedRoutes><Home/></ProtectedRoutes>}/>
         <Route path = '/rigester' element={<Register/>}/>
+        <Route path='/userProfile' element={<UserCrud/>}/>
       </Routes>
 
       </BrowserRouter>

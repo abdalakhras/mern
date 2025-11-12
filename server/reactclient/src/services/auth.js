@@ -15,7 +15,7 @@ export async function logOut () {
     localStorage.removeItem('user')
 }
 
-export async function getCurrenUser() {
+export  function getCurrenUser() {
     
     const raw = localStorage.getItem('user')
     if(!raw) return null
@@ -26,5 +26,11 @@ export async function getCurrenUser() {
 export async function Register(username,email,password,role) {
     const {data} = await api.post('users/create',{username,email,password,role})
     localStorage.setItem('user',JSON.stringify(data.user))
+    return data
+}
+
+export async function userUpdate(username,email,passowrd) {
+    const {data} = await api.put('/users/updateuser',username,email,passowrd)
+    localStorage.setItem('user',JSON.stringify(data.updatedUser))
     return data
 }

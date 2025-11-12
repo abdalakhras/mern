@@ -17,6 +17,8 @@ const [error,setError] = useState('')
         try {
             const data = await RegisterForm (form.username,form.email,form.password,form.role)
             console.log(data)
+            alert('user rigesterd successfully')
+            // window.location.href = '/login'
              console.log(data.message)
         } catch (error) {
             setError(error.message)
