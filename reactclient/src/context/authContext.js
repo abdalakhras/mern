@@ -7,11 +7,15 @@ const Authcontext = createContext(null)
 export function AuthProvider({children}){
 
     const [user,setUser] = useState(getCurrenUser())
+
+
     const login = async (email,password) => {
         const data = await apiLogin (email,password)
         setUser(data.user)
         return data
     }
+
+    
     const logOut =()=>{
         apiLogOut()
         setUser(null)

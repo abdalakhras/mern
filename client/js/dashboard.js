@@ -23,7 +23,7 @@ try {
     if(res.status == 200){
         var data = await res.json();
         console.log(data)
-        document.getElementById('userRole').innerText = "USer Role :" + data.message + data.userRole.role
+        // document.getElementById('userRole').innerText = "USer Role :" + data.message + data.userRole.role
     }else if(res.status === 403){
         console.log('not admin')
             window.location.href = 'home.html';
