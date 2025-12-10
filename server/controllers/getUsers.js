@@ -10,6 +10,7 @@ const getUserData = await User.find()
 res.status(201).json(getUserData)
 }catch(error){
 res.status(500).json({message:error.message})
+console.log({message:error.message})
 }
 
 }

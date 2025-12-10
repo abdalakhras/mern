@@ -21,6 +21,7 @@ import OrdersAdmin from './orders';
 import ProductsAdmin from './products';
 import UsersAdmin from './users';
 import { useAuth } from '../../context/authContext';
+import {userImage} from '../../images/userImage.jpg'
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import {
@@ -35,7 +36,7 @@ import { DemoProvider } from '@toolpad/core/internal';
 const NAVIGATION = [
   {
     kind: 'header',
-    title: 'Main items',
+    title: 'Admin Menu',
   },
   {
     segment: 'dashboard',
@@ -150,12 +151,40 @@ AccountSidebarPreview.propTypes = {
    */
   open: PropTypes.bool,
 };
+// transfer this const insude the next function so i can use (user) from useAuth()
+// const accounts = [
+//   {
+//     id: 1,
+//     name: 'Bharat Kashyap',
+//     email: 'bharatkashyap@outlook.com',
+//     image: 'https://avatars.githubusercontent.com/u/19550456',
+//     projects: [
+//       {
+//         id: 3,
+//         title: 'Project X',
+//       },
+//     ],
+//   },
+//   {
+//     id: 2,
+//     name: 'Bharat MUI',
+//     email: 'bharat@mui.com',
+//     color: '#8B4513', // Brown color
+//     projects: [{ id: 4, title: 'Project A' }],
+//   },
+// ];
 
-const accounts = [
+function SidebarFooterAccountPopover() {
+  const {user} = useAuth()
+  const {id , setId} = React.useState(0)
+  const handleID = ()=>{
+    setId(id+1)
+  }
+  const accounts = [
   {
-    id: 1,
-    name: 'Bharat Kashyap',
-    email: 'bharatkashyap@outlook.com',
+    id: id,
+    name: user.username,
+    email: user.email,
     image: 'https://avatars.githubusercontent.com/u/19550456',
     projects: [
       {
@@ -165,15 +194,15 @@ const accounts = [
     ],
   },
   {
-    id: 2,
-    name: 'Bharat MUI',
-    email: 'bharat@mui.com',
+    id: id,
+    name: 'another admin',
+    email: 'newAdmin@mui.com',
     color: '#8B4513', // Brown color
     projects: [{ id: 4, title: 'Project A' }],
   },
 ];
 
-function SidebarFooterAccountPopover() {
+
   return (
     <Stack direction="column">
       <Typography variant="body2" mx={2} mt={1}>
@@ -280,18 +309,28 @@ SidebarFooterAccount.propTypes = {
   mini: PropTypes.bool.isRequired,
 };
 
-const demoSession = {
-  user: {
-    name: 'Bharat Kashyap',
-    email: 'bharatkashyap@outlook.com',
-    image: 'https://avatars.githubusercontent.com/u/19550456',
-  },
-};
+// const demoSession = {
+//   user: {
+//     name: 'Bharat Kashyap',
+//     email: 'bharatkashyap@outlook.com',
+//     image: 'https://avatars.githubusercontent.com/u/19550456',
+//   },
+// };
 
 function DashboardLayoutAccountSidebar(props) {
     // useAuth was called here not randomly , i  wanted to call it inside this function , so i can use (user and logOut) directly
     const {logOut,user} = useAuth() 
-    console.log("user :", user)
+  // i copied const demoSession here so i can use (user) from useAuth()
+    const demoSession = {
+  user: {
+    name: user.username,
+    email: user.email,
+    image:'no image yet',
+  },
+};
+
+    // console.log("user :", user)
+    // console.log(demoSession)
   const { window } = props;
 
   const [pathname, setPathname] = React.useState('/dashboard');

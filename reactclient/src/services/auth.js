@@ -34,3 +34,9 @@ export async function userUpdate(username,email,passowrd) {
     localStorage.setItem('user',JSON.stringify(data.updatedUser))
     return data
 }
+
+export async function getAllUsers() {
+    const {data} = await api.get('/users/getusersdata')
+    localStorage.setItem('Allusers',JSON.stringify(data))
+    return data
+}
