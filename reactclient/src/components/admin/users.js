@@ -12,7 +12,7 @@ const columns = [
   {
     field: 'role',
     headerName: 'role',
-    type: 'number',
+    type: 'text',
     width: 90,
   },
 //   {
