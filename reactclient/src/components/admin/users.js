@@ -4,6 +4,7 @@ import { getAllUsers } from "../../services/auth";
 
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
+import Button from "@mui/material/Button";
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -14,6 +15,24 @@ const columns = [
     headerName: 'role',
     type: 'text',
     width: 90,
+  },
+   {
+    field: 'action',
+    headerName: 'Action',
+    width: 150,
+    renderCell: (params) => (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          handleRow(params.row.id)
+          console.log('Row clicked:', params.row);
+          console.log('params:', params);
+        }}
+      >
+        Click me
+      </Button>
+    ),
   },
 //   {
 //     field: 'password',
@@ -39,7 +58,9 @@ const rows = [
 
 const paginationModel = { page: 0, pageSize: 5 };
 
-
+const handleRow = (id)=>{
+console.log(id)
+}
 
 export default function UsersAdmin(){
     
@@ -85,7 +106,9 @@ console.log(users)
         pageSizeOptions={[5, 10]}
         checkboxSelection
         sx={{ border: 0 }}
+        
       />
+      <Button onClick={(params)=>(console.log(params))}>click here</Button>
     </Paper>
         </>
     )
