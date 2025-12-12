@@ -18,6 +18,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import MainAdmin from './main';
 import CategoryAdmin from './category';
 import OrdersAdmin from './orders';
+import BasicTable from './orders'
 import ProductsAdmin from './products';
 import UsersAdmin from './users';
 import { useAuth } from '../../context/authContext';
@@ -113,7 +114,7 @@ function DemoPageContent({ pathname }) {
            <UsersAdmin/>
         )}
         {pathname === '/orders' && (
-           <OrdersAdmin/>
+           <BasicTable/>
         )}
 
       {/* <Typography>Dashboard content for {pathname}</Typography> */}
