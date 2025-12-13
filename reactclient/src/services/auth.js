@@ -40,3 +40,7 @@ export async function getAllUsers() {
     localStorage.setItem('Allusers',JSON.stringify(data))
     return data
 }
+export async function deleteUser(id) {
+    const {data} = await api.delete(`/users/delete/${id}`)
+     return data
+}

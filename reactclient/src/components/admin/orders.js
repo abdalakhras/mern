@@ -7,6 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { getAllUsers } from '../../services/auth';
+import { deleteUser } from '../../services/auth';
 import { useEffect, useState } from 'react';
 
 function createData(name, calories, fat, carbs, protein) {
@@ -24,6 +25,7 @@ const rows = [
 export default function BasicTable() {
     
     const [users,setUsers] = useState([])
+    // const [id,setId] = useState()
 
     useEffect(()=>{
         
@@ -31,15 +33,31 @@ const getUsers = async () => {
     
     try {
         const data = await getAllUsers()
+        // const data2 = await deleteUser() 
         console.log(data)
         setUsers(data)
+        Delete()
     } catch (error) {
         console.log(error.message)
     }
 }
 
 getUsers()
-    },[])
+    },[users])
+
+
+    async function Delete(id) {
+ try {
+    if(!id){
+        console.log('id not ready')
+    }else{
+        const data = await deleteUser(id)
+    }
+    
+ } catch (error) {
+    alert(error.message)
+ }   
+}
 
 
   return (
@@ -66,7 +84,11 @@ getUsers()
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.role}</TableCell>
               <TableCell align="right">{row._id}</TableCell>
-              <TableCell align="right"><Button>delete</Button></TableCell>
+              <TableCell align="right"><Button onClick={()=>{
+                // setId(row._id)
+                Delete(row._id)
+                
+              }}>delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
