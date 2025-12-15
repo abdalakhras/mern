@@ -44,3 +44,9 @@ export async function deleteUser(id) {
     const {data} = await api.delete(`/users/delete/${id}`)
      return data
 }
+
+export async function UpdateUserInfo(username,email,role,id) {
+    const {data} = await api.put('/users/updatebyAdmin',{username,email,role,id})
+    localStorage.setItem('updatedUser',JSON.stringify(data.updateusersdata))
+    return data
+}
