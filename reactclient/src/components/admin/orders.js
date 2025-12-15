@@ -71,12 +71,12 @@ export default function BasicTable() {
 
   
     const [users,setUsers] = useState([])
-    // const [id,setId] = useState()
+    const [userId,setUserId] = useState(null)
     const [form,setForm] = useState({
       username:'',
       email:'',
       role:'',
-      id:''
+      id: ''
     })
 
     useEffect(()=>{
@@ -88,7 +88,7 @@ const getUsers = async () => {
         // const data2 = await deleteUser() 
         console.log(data)
         setUsers(data)
-        Delete()
+        // Delete() // i think this here is unnecesseray
     } catch (error) {
         console.log(error.message)
     }
@@ -97,11 +97,11 @@ const getUsers = async () => {
 getUsers()
     },[users])
 
-
-    async function Delete(id) {
+    // this needs to be inside a use effect
+   const Delete = async (id)=>{
  try {
     if(!id){
-        console.log('id not ready')
+        // console.log('id not ready')
     }else{
         const data = await deleteUser(id)
     }
@@ -116,12 +116,13 @@ const onSubmit = async (e) => {
   e.preventDefault()
   handleClose()
   console.log(form)
-  // try {
-  //   const data = await UpdateUserInfo(form.username,form.email,form.role,form.id)
-  // } catch (error) {
-  //    console.log(error.message)
-  //    alert(error.message)
-  // }
+  try {
+    const data = await UpdateUserInfo(form.username,form.email,form.role,form.id)
+    console.log(data)
+  } catch (error) {
+     console.log(error.message)
+     alert(error.message)
+  }
 }
   
   
@@ -161,6 +162,9 @@ const onSubmit = async (e) => {
               }}>delete</Button></TableCell>
               <TableCell align='right'><Button onClick={()=>{
                 handleOpen()
+                setUserId(row._id)
+                setForm({...form,id:row._id})
+                console.log(userId)
               }}>update</Button></TableCell>
             </TableRow>
           ))}
@@ -212,9 +216,9 @@ const onSubmit = async (e) => {
         <TextField
           disabled
           id="outlined-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-          // onChange={(e)=>(setForm({...form,id:e.target.value}))}
+          label="userId"
+          defaultValue= {userId}
+          
         />
         
         {/* this is only for the Old password */}
