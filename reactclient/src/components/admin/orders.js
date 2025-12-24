@@ -79,31 +79,32 @@ export default function BasicTable() {
       id: ''
     })
 
-    useEffect(()=>{
+   
         
 const getUsers = async () => {
     
     try {
         const data = await getAllUsers()
-        // const data2 = await deleteUser() 
         console.log(data)
         setUsers(data)
-        // Delete() // i think this here is unnecesseray
     } catch (error) {
         console.log(error.message)
     }
 }
 
+ useEffect(()=>{
 getUsers()
-    },[users])
+    },[])
 
-    // this needs to be inside a use effect
+
+    // i think this needs to be inside a use effect ??
    const Delete = async (id)=>{
  try {
     if(!id){
-        // console.log('id not ready')
+     console.log('id is not ready')
     }else{
         const data = await deleteUser(id)
+        getUsers()
     }
     
  } catch (error) {
@@ -119,6 +120,7 @@ const onSubmit = async (e) => {
   try {
     const data = await UpdateUserInfo(form.username,form.email,form.role,form.id)
     console.log(data)
+    getUsers()
   } catch (error) {
      console.log(error.message)
      alert(error.message)
@@ -156,7 +158,6 @@ const onSubmit = async (e) => {
               <TableCell align="right">{row.role}</TableCell>
               <TableCell align="right">{row._id}</TableCell>
               <TableCell align="right"><Button onClick={()=>{
-                // setId(row._id)
                 Delete(row._id)
                 
               }}>delete</Button></TableCell>
