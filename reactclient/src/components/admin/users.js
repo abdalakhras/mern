@@ -22,6 +22,7 @@ import { getAllUsers } from '../../services/auth';
 import { deleteUser } from '../../services/auth';
 import { UpdateUserInfo } from '../../services/auth';
 import { AddNewUser } from '../../services/auth';
+import { updatePassByAdmin } from '../../services/auth';
 import { useEffect, useState } from 'react';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
@@ -46,18 +47,32 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4,
+  // p: 4,
+  pt: 2,
+  px: 4,
+  pb: 4,
 };
 
 
 
 export default function BasicTable() {
 
-// this is for modal
+// this is for update modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  //this is for child modal 
+   const [openChild, setOpenChild] = React.useState(false);
+  const handleOpenChild = () => {
+    setOpenChild(true);
+  };
+  const handleCloseChild = () => {
+    setOpenChild(false);
+  };
+
+
+// this is for adduser modal
    const [open1, setOpen1] = React.useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
@@ -258,15 +273,28 @@ const onSubmit = async (e) => {
           defaultValue= {userId}
           
         />
-        
-        {/* this is only for the Old password */}
-       <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Old-Password</InputLabel>
+        {/* this is for child modal  */}
+
+          <React.Fragment>
+      <Modal
+        open={openChild}
+        onClose={handleCloseChild}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...style, width: 300 }}>
+          <h2 id="child-modal-title">update password</h2>
+
+           {/* this is only for the Old password */}
+       <FormControl sx={{ m: 1, width: '20ch' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">New-Password</InputLabel>
           <OutlinedInput
-            id="Old-password"
+            id="New-password"
             type={showPassword ? 'text' : 'password'}
+            
             endAdornment={
               <InputAdornment position="end">
+               
                 <IconButton
                   aria-label={
                     showPassword ? 'hide the password' : 'display the password'
@@ -283,9 +311,18 @@ const onSubmit = async (e) => {
             label="Password"
           />
         </FormControl>
+
+          <Button onClick={handleCloseChild}>Close Child Modal</Button>
+        </Box>
+      </Modal>
+    </React.Fragment>
+
+
         </div>
     </Box>
+            
             <Button type='submit'>submit changes</Button>
+            <Button onClick={handleOpenChild}>update passowrd</Button>
             <Button type='button' onClick={handleClose}>cancel</Button>
           </form>
         </Box>

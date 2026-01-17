@@ -56,3 +56,7 @@ export async function AddNewUser(username,email,role,password) {
     localStorage.setItem('new user',JSON.stringify(data.user))
     return data
 }
+export async function updatePassByAdmin(passowrd) {
+    const {data} = await api.post('users/updatepassbyAdmin',{passowrd})
+    return data
+}

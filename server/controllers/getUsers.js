@@ -138,3 +138,22 @@ exports.updatebyAdmin = async(req,res)=>{
          console.log({message:error.message})
     }
 }
+
+exports.updatePassbyAdmin = async (req,res) => {
+    const id = req.body.id 
+    const newpass = req.body.password
+    try {
+        const updatePass = await User.findById(id)
+        const salt = await bcrypt.genSalt(10);
+        const newHashedPassword = await bcrypt.hash(newpass,salt)
+        updatePass.password = newHashedPassword
+        await updatePass.save()
+
+        res.status(200).json({message:'password has been changed',updatePass})
+        console.log('new password is set and res from server side is 200')
+
+    } catch (error) {
+       res.status(500).json({message:error.message})
+         console.log({message:error.message})
+    }
+}
